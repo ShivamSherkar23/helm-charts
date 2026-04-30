@@ -1,0 +1,23 @@
+replicaCount: 1
+
+image:
+  repository: postgres
+  tag: "17-alpine"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 5432
+
+auth:
+  database: quill
+  username: admin
+  existingSecret: quill-postgres
+  passwordKey: POSTGRES_PASSWORD
+
+persistence:
+  enabled: true
+  size: 1Gi
+  storageClassName: ""
+
+resources: {}

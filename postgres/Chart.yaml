@@ -1,0 +1,6 @@
+apiVersion: v2
+name: postgres
+description: A small PostgreSQL chart for Quill
+type: application
+version: 1.0.0
+appVersion: "17-alpine"

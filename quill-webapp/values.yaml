@@ -1,0 +1,32 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/shivamsherkar23/quill-webapp
+  tag: "1.0.0-dev.9"
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 8000
+
+containerPort: 8000
+
+env:
+  POSTGRES_HOST: "postgres"
+  POSTGRES_PORT: "5432"
+  POSTGRES_DB: "quill"
+  POSTGRES_USER: "admin"
+  POSTGRES_DRIVER: "postgresql+asyncpg"
+
+secretEnv:
+  SECRET_KEY:
+    secretName: quill-webapp
+    key: SECRET_KEY
+  POSTGRES_PASSWORD:
+    secretName: quill-postgres
+    key: POSTGRES_PASSWORD
+  DATABASE_URL:
+    secretName: ""
+    key: DATABASE_URL
+
+resources: {}
